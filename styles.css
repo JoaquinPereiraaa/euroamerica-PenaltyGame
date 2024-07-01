@@ -1,0 +1,21 @@
+.main-index {
+  color: blue;
+  background-color: rgb(255, 246, 246);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 2rem;
+}
+
+#start-button {
+  height: 7rem;
+  width: 9rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+#start-button:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+}
