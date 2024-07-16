@@ -1,0 +1,32 @@
+body {
+  font-weight: bold;
+  height: 100%;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.377),
+      rgba(24, 23, 23, 0.452)
+    ),
+    url("https://copaamerica.com/_next/image?url=https%3A%2F%2Fcopaamerica-imagens-prod.s3.sa-east-1.amazonaws.com%2FCopa_America_2024_fase_de_grupos_673ba1972f.jpg&w=1920&q=75");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  color: #fff;
+}
+.listaGrupo {
+  list-style: none;
+}
+.arco {
+  margin: 0 auto;
+  background-image: url("../assets/img/arco.jpeg");
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 31.25rem;
+  width: 31.25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: end;
+  gap: 2rem;
+}

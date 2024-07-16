@@ -1,28 +1,17 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const teams = [
-    { name: "Argentina", flag: "../assets/banderas-america/argentina.png" },
-    { name: "Peru", flag: "../assets/banderas-america/peru.png" },
-    { name: "Chile", flag: "../assets/banderas-america/chile.png" },
-    { name: "Canada", flag: "../assets/banderas-america/canada.png" },
-    { name: "Mexico", flag: "../assets/banderas-america/mexico.png" },
-    { name: "Ecuador", flag: "../assets/banderas-america/ecuador.png" },
-    { name: "Venezuela", flag: "../assets/banderas-america/venezuela.png" },
-    { name: "Jamaica", flag: "../assets/banderas-america/jamaica.png" },
-    { name: "EEUU", flag: "../assets/banderas-america/estados-unidos.png" },
-    {
-      name: "Uruguay",
-      flag: "../assets/banderas-america/uruguay.png",
-    },
-    { name: "Panama", flag: "../assets/banderas-america/panama.png" },
-    { name: "Bolivia", flag: "../assets/banderas-america/bolivia.png" },
-    { name: "Brasil", flag: "../assets/banderas-america/brasil.png" },
-    { name: "Colombia", flag: "../assets/banderas-america/colombia.png" },
-    { name: "Paraguay", flag: "../assets/banderas-america/paraguay.png" },
-    { name: "Costa Rica", flag: "../assets/banderas-america/costa-rica.png" },
-  ];
+let teams = []; // Declarar la variable teams globalmente
 
-  const teamsContainer = document.getElementById("teams-container");
+fetch("../json/teams-america.json")
+  .then((response) => response.json())
+  .then((data) => {
+    teams = data; // Asignar los datos a la variable teams
+    crearBotones(); // Llamar a la función para poblar el contenedor con los equipos
+  })
+  .catch((err) => console.error(err));
 
+let teamsContainer = document.getElementById("teams-container");
+
+// Función para poblar el contenedor con los equipos
+function crearBotones() {
   const grupos = Math.ceil(teams.length / 4);
   const grupoA = teams.slice(0, grupos);
   const grupoB = teams.slice(grupos, grupos * 2);
@@ -35,12 +24,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const column = document.createElement("div");
     column.classList.add("teams-column");
     group.forEach((team) => {
-      const button = createTeamButton(team);
-      column.appendChild(button);
+      if (team.flag) {
+        const button = createTeamButton(team);
+        column.appendChild(button);
+      } else {
+        console.error(`El equipo ${team.name} no tiene una propiedad 'flag'.`);
+      }
     });
     teamsContainer.appendChild(column);
   });
-});
+}
 
 function createTeamButton(team) {
   const button = document.createElement("button");
@@ -82,3 +75,8 @@ function showModal(team) {
     modal.style.display = "none";
   };
 }
+
+// Verificar que el DOM está completamente cargado antes de intentar acceder a los elementos
+document.addEventListener("DOMContentLoaded", function () {
+  teamsContainer = document.getElementById("teams-container");
+});

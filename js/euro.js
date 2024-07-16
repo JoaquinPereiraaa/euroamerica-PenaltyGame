@@ -1,40 +1,21 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const teams = [
-    /* GRUPO A*/
-    { name: "Alemania", flag: "../assets/banderas-euro/alemania.png" },
-    { name: "Escocia", flag: "../assets/banderas-euro/escocia.png" },
-    { name: "Hungría", flag: "../assets/banderas-euro/hungria.png" },
-    { name: "Suiza", flag: "../assets/banderas-euro/suiza.png" },
-    /* GRUPO B*/
-    { name: "España", flag: "../assets/banderas-euro/españa.png" },
-    { name: "Croacia", flag: "../assets/banderas-euro/croacia.png" },
-    { name: "Italia", flag: "../assets/banderas-euro/italia.png" },
-    { name: "Albania", flag: "../assets/banderas-euro/albania.png" },
-    /* GRUPO C*/
-    { name: "Eslovenia", flag: "../assets/banderas-euro/eslovenia.png" },
-    { name: "Dinamarca", flag: "../assets/banderas-euro/dinamarca.png" },
-    { name: "Serbia", flag: "../assets/banderas-euro/serbia.png" },
-    { name: "Inglaterra", flag: "../assets/banderas-euro/inglaterra.png" },
-    /* GRUPO D*/
-    { name: "Polonia", flag: "../assets/banderas-euro/polonia.png" },
-    { name: "Países Bajos", flag: "../assets/banderas-euro/paises-bajos.png" },
-    { name: "Austria", flag: "../assets/banderas-euro/austria.png" },
-    { name: "Francia", flag: "../assets/banderas-euro/francia.png" },
-    /* GRUPO E*/
-    { name: "Bélgica", flag: "../assets/banderas-euro/belgica.png" },
-    { name: "Eslovaquia", flag: "../assets/banderas-euro/eslovaquia.png" },
-    { name: "Rumania", flag: "../assets/banderas-euro/rumania.png" },
-    { name: "Ucrania", flag: "../assets/banderas-euro/ucrania.png" },
-    /* GRUPO E*/
-    { name: "Turquía", flag: "../assets/banderas-euro/turquia.png" },
-    { name: "Georgia", flag: "../assets/banderas-euro/georgia.png" },
-    { name: "Portugal", flag: "../assets/banderas-euro/portugal.png" },
-    { name: "Chequia", flag: "../assets/banderas-euro/republica-checa.png" },
-  ];
+const user = JSON.parse(localStorage.getItem("login_success")) || false;
+if (!user) {
+  window.location.href = "./usuario/login.html";
+}
+let teams = []; // Declarar la variable teams globalmente
 
-  const teamsContainer = document.getElementById("teams-container");
+fetch("../json/teams-eurocopa.json")
+  .then((response) => response.json())
+  .then((data) => {
+    teams = data; // Asignar los datos a la variable teams
+    crearBotones(); // Llamar a la función para poblar el contenedor con los equipos
+  })
+  .catch((err) => console.error(err));
 
-  // Divide los equipos en cuatro grupos
+let teamsContainer = document.getElementById("teams-container");
+
+// Función para poblar el contenedor con los equipos
+function crearBotones() {
   const grupos = Math.ceil(teams.length / 6);
   const grupoA = teams.slice(0, grupos);
   const grupoB = teams.slice(grupos, grupos * 2);
@@ -44,62 +25,89 @@ document.addEventListener("DOMContentLoaded", function () {
   const grupoF = teams.slice(grupos * 5, grupos * 6);
 
   const columns = [grupoA, grupoB, grupoC, grupoD, grupoE, grupoF];
-
   columns.forEach((group) => {
     const column = document.createElement("div");
     column.classList.add("teams-column");
     group.forEach((team) => {
-      const button = createTeamButton(team);
-      column.appendChild(button);
+      if (team.flag) {
+        const button = createTeamButton(team);
+        column.appendChild(button);
+      } else {
+        console.error(`El equipo ${team.name} no tiene una propiedad 'flag'.`);
+      }
     });
     teamsContainer.appendChild(column);
   });
+}
 
-  function createTeamButton(team) {
-    const button = document.createElement("button");
-    button.classList.add("team-button");
+function createTeamButton(team) {
+  const button = document.createElement("button");
+  button.classList.add("team-button");
 
-    const img = document.createElement("img");
-    img.src = team.flag;
-    img.alt = `${team.name} Flag`;
+  const img = document.createElement("img");
+  img.src = team.flag;
+  img.alt = `${team.name} Flag`;
 
-    const span = document.createElement("span");
-    span.textContent = team.name;
+  const span = document.createElement("span");
+  span.textContent = team.name;
 
-    button.appendChild(img);
-    button.appendChild(span);
+  button.appendChild(img);
+  button.appendChild(span);
 
-    button.addEventListener("click", () => {
-      showModal(team);
-    });
-    return button;
-  }
+  button.addEventListener("click", () => {
+    showModal(team);
+  });
+  return button;
+}
 
-  function showModal(team) {
-    const modal = document.getElementById("team-modal");
-    const modalImage = document.getElementById("modal-team-image");
-    modalImage.src = team.flag;
-    modalImage.alt = `${team.name} Flag`;
+function showModal(team) {
+  const modal = document.getElementById("team-modal");
+  const modalImage = document.getElementById("modal-team-image");
+  modalImage.src = team.flag;
+  modalImage.alt = `${team.name} Flag`;
 
-    modal.style.display = "flex";
+  modal.style.display = "flex";
 
-    const acceptButton = document.getElementById("modal-accept-button");
-    const cancelButton = document.getElementById("modal-cancel-button");
+  const acceptButton = document.getElementById("modal-accept-button");
+  const cancelButton = document.getElementById("modal-cancel-button");
 
-    acceptButton.onclick = () => {
-      localStorage.setItem("equipoElegido", JSON.stringify(team));
-      window.location.href = "juegoEU.html";
-    };
-
-    cancelButton.onclick = () => {
-      modal.style.display = "none";
-    };
-  }
-
-  window.onclick = function (event) {
-    const modal = document.getElementById("team-modal");
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
+  acceptButton.onclick = () => {
+    localStorage.setItem("equipoElegido", JSON.stringify(team));
+    window.location.href = "juegoEU.html";
   };
+
+  cancelButton.onclick = () => {
+    modal.style.display = "none";
+  };
+}
+
+// Verificar que el DOM está completamente cargado antes de intentar acceder a los elementos
+document.addEventListener("DOMContentLoaded", function () {
+  teamsContainer = document.getElementById("teams-container");
+});
+
+const logout = document.querySelector("#logout");
+logout.addEventListener("click", () => {
+  Swal.fire({
+    title: "Estás seguro?",
+    text: "Tendrás que registrarte/loguearte de nuevo para ingresar.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, seguro",
+    cancelButtonText: "No, cancelar",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Hasta pronto!",
+        text: "Saldrás del campeonato y volverás al menú",
+        icon: "success",
+        willClose: () => {
+          localStorage.removeItem("login_success");
+          window.location.href = "../index.html";
+        },
+      });
+    }
+  });
 });

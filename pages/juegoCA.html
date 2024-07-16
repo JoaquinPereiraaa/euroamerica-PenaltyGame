@@ -9,19 +9,22 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous"
   />
+  <link rel="stylesheet" href="../css/jugarAM.css">
     <title>Juego de Penales</title>
     <body>
-      <buton class="btn btn-danger"><a href="../index.html">Volver</a></buton>
-      <h1>COPA AMERICA</h1>
-      <div id="marcador"></div>
-      <div class="arco">
+      <a href="../index.html"><buton class="btn btn-danger">Volver</buton></a>
+      <h1 class="text-center">COPA AMERICA</h1>
+      <div class="text-center" id="marcador"></div> 
+      <div class="grupo"></div>
+      <div class="text-center">
+        <h2 class="gol"></h2>
+      </div>
+      <div class="arco ">
         <buton class="btn btn-primary" id="izquierda">IZQUIERDA</buton>
         <buton class="btn btn-primary" id="medio">MEDIO</buton>
         <buton class="btn btn-primary" id="derecha">DERECHA</buton>
       </div>
-      <div class="text-center">
-        <h2 class="gol"></h2>
-      </div>
+
       <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -32,6 +35,7 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/penalesAM.js"></script>
 
   </body>

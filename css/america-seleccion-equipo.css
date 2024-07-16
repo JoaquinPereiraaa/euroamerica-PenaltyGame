@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/e/e3/Conmebol_copa_america_2024.jpg");
+  background-image: url("https://images.copaamerica.com/1200x600-esp-1.png");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -67,7 +67,7 @@ body {
   align-items: center;
 }
 .modal-content {
-  background-color: #fefefe;
+  background-color: #ccfaa1;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;

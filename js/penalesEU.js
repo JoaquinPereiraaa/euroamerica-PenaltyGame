@@ -15,11 +15,11 @@ let atajadas = 0;
 let penalActual = 0;
 let oponente = "";
 let puntos = 0;
-let fase = ["grupos", "cuartos", "semis", "final"];
+let fase = ["grupos", "octavos", "cuartos", "semis", "final"];
 const texto = document.querySelector(".gol");
 
 // Cargar datos desde el archivo JSON
-fetch("../json/teams-america.json")
+fetch("../json/teams-eurocopa.json")
   .then((response) => response.json())
   .then((data) => {
     teams = data; // Asignar los datos a la variable teams
@@ -131,12 +131,10 @@ function patear(direccion) {
         alert("Error en el resultado.");
         break;
     }
-
     // Mostrar el texto por 1 segundo
     setTimeout(() => {
       texto.innerText = "";
     }, 1000);
-
     marcador.innerHTML = `${equipoElegido.name} ${resultadoPartido.golesUsuario} vs ${oponente} ${resultadoPartido.atajadasOponente}`;
 
     if (penalActual === penales) {
@@ -189,8 +187,7 @@ function patear(direccion) {
 
 function sortearRival() {
   let posiblesRivales = teams.filter(
-    (team) =>
-      team.group === equipoElegido.group && team.name !== equipoElegido.name
+    (team) => team.group !== equipoElegido.group
   );
   let indiceAleatorio = Math.floor(Math.random() * posiblesRivales.length);
   return posiblesRivales[indiceAleatorio];
@@ -198,8 +195,7 @@ function sortearRival() {
 
 function sortearRivales() {
   let posiblesRivales = teams.filter(
-    (team) =>
-      team.group === equipoElegido.group && team.name !== equipoElegido.name
+    (team) => team.group !== equipoElegido.group
   );
   let equiposSorteados = [];
   while (equiposSorteados.length < 2) {
