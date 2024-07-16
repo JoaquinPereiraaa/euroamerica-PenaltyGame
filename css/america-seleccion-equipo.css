@@ -86,3 +86,8 @@ body {
 .modal-buttons button {
   padding: 5px 10px;
 }
+main h2 {
+  color: #fff;
+  text-shadow: 2px 2px rgb(0, 0, 0);
+  font-weight: bold;
+}
