@@ -1,10 +1,17 @@
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-image: linear-gradient(
       rgba(0, 0, 0, 0.377),
       rgba(24, 23, 23, 0.452)
     ),
-    url("https://s1.elespanol.com/2024/06/12/deportes/futbol/eurocopa/862424653_243974472_1024x576.png");
+    url("https://sportsmedia.games/wp-content/uploads/2023/12/000_346V7N9-scaled.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -14,6 +21,7 @@ body {
   height: 100vh;
   margin: 0;
 }
+
 main h2 {
   color: #fff;
   text-shadow: 2px 2px rgb(0, 0, 0);
@@ -44,9 +52,11 @@ main h2 {
   box-sizing: border-box;
   transition: transform 0.3s ease-in-out;
 }
+
 .team-button:hover {
   transform: scale(1.5);
 }
+
 .team-button img {
   width: 30px;
   height: 30px;
@@ -57,8 +67,8 @@ main h2 {
   font-size: 16px;
   font-weight: bold;
 }
-/* modal */
 
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -68,11 +78,11 @@ main h2 {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
   justify-content: center;
   align-items: center;
 }
+
 .modal-content {
   background-color: #f5b3b3;
   margin: auto;
@@ -81,15 +91,155 @@ main h2 {
   width: 80%;
   max-width: 300px;
 }
+
 .modal img {
   width: 100%;
   height: auto;
 }
+
 .modal-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
+
 .modal-buttons button {
   padding: 5px 10px;
+}
+
+/* Media Queries */
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 425px) {
+  .teams-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+  }
+
+  .team-button {
+    height: 30px;
+    padding: 4px;
+  }
+
+  .team-button img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .team-button span {
+    font-size: 12px;
+  }
+
+  .modal-content {
+    width: 90%;
+    max-width: 250px;
+  }
+}
+
+/* Estilos para tablets */
+@media (min-width: 426px) and (max-width: 768px) {
+  .teams-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .team-button {
+    height: 45px;
+  }
+
+  .team-button img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .team-button span {
+    font-size: 14px;
+  }
+
+  .modal-content {
+    width: 85%;
+    max-width: 280px;
+  }
+}
+
+/* Estilos para pantallas medianas */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .teams-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.377),
+        rgba(24, 23, 23, 0.452)
+      ),
+      url("https://s1.elespanol.com/2024/06/12/deportes/futbol/eurocopa/862424653_243974472_1024x576.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .team-button {
+    height: 50px;
+  }
+
+  .team-button img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .team-button span {
+    font-size: 16px;
+  }
+
+  .modal-content {
+    width: 80%;
+    max-width: 300px;
+  }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 1025px) {
+  .teams-container {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.377),
+        rgba(24, 23, 23, 0.452)
+      ),
+      url("https://s1.elespanol.com/2024/06/12/deportes/futbol/eurocopa/862424653_243974472_1024x576.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .team-button {
+    height: 50px;
+  }
+
+  .team-button img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .team-button span {
+    font-size: 16px;
+  }
+
+  .modal-content {
+    width: 80%;
+    max-width: 300px;
+  }
 }

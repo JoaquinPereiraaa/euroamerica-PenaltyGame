@@ -1,12 +1,14 @@
+/* Estilos generales */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 .main-index {
   color: rgb(255, 255, 255);
   background: linear-gradient(rgba(0, 0, 0, 0.377), rgba(24, 23, 23, 0.253)),
-    url("https://www.marcadorint.com/wp-content/uploads/2024/01/EURO-2024-y-Copa-America.jpg");
+    url("https://images.unsplash.com/photo-1517769798-ff41bc33467e?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   font-weight: bold;
   text-shadow: 2px 2px 5px rgb(0, 0, 0);
   background-position: center;
@@ -28,4 +30,68 @@
 #start-button:hover {
   cursor: pointer;
   transform: scale(1.5);
+}
+
+/* Estilos para dispositivos móviles */
+@media (min-width: 320px) and (max-width: 425px) {
+  .main-index {
+    font-size: 2rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.377), rgba(24, 23, 23, 0.253)),
+      url("https://images.unsplash.com/photo-1517769798-ff41bc33467e?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-position: center;
+    background-size: cover;
+  }
+
+  #start-button {
+    height: 5rem;
+    width: 7rem;
+  }
+}
+
+/* Estilos para tablets */
+@media (min-width: 426px) and (max-width: 768px) {
+  .main-index {
+    font-size: 2.5rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.377), rgba(24, 23, 23, 0.253)),
+      url("https://images.unsplash.com/photo-1517769798-ff41bc33467e?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-position: center;
+    background-size: cover;
+  }
+
+  #start-button {
+    height: 6rem;
+    width: 8rem;
+  }
+}
+
+/* Estilos para pantallas medianas */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-index {
+    font-size: 2.8rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.377), rgba(24, 23, 23, 0.253)),
+      url("https://www.marcadorint.com/wp-content/uploads/2024/01/EURO-2024-y-Copa-America.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  #start-button {
+    height: 6.5rem;
+    width: 8.5rem;
+  }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 1025px) {
+  .main-index {
+    font-size: 3rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.377), rgba(24, 23, 23, 0.253)),
+      url("https://www.marcadorint.com/wp-content/uploads/2024/01/EURO-2024-y-Copa-America.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  #start-button {
+    height: 7rem;
+    width: 9rem;
+  }
 }
