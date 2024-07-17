@@ -30,3 +30,8 @@ body {
   align-items: end;
   gap: 2rem;
 }
+.grupo-puntaje {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

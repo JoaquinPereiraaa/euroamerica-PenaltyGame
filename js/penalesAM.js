@@ -15,9 +15,9 @@ let atajadas = 0;
 let penalActual = 0;
 let oponente = "";
 let puntos = 0;
-let fase = ["grupos", "cuartos", "semis", "final"];
 const texto = document.querySelector(".gol");
 const opcionesGol = document.querySelector(".arco");
+const puntaje = document.querySelector(".puntaje");
 
 // Cargar datos desde el archivo JSON
 fetch("../json/teams-america.json")
@@ -251,6 +251,7 @@ function patear(direccion) {
 
       if (goles > atajadas) {
         puntos += 3;
+        puntaje.innerText = `Puntos: ${puntos}`;
         console.log(`Ganó ${equipoElegido.name}`);
       }
       console.log("Fin del partido");

@@ -8,11 +8,15 @@ loginForm.addEventListener("submit", (e) => {
     (user) => user.email === email && user.password === password
   );
   if (!validUser) {
-    return alert("Usuario y/o contraseña incorrectos");
+    return Swal.fire({
+      icon: "error",
+      title: "Upsss",
+      text: `Usuario y/o contraseña incorrectos`,
+    });
   }
   Swal.fire({
-    title: "BIENVENIDO DE NUEVO",
-    text: `${validUser.name} Diviértete jugando la EUROCOPA`,
+    title: `HOLAAA ${validUser.name}`,
+    text: `Diviértete jugando la EUROCOPA`,
     icon: "success",
     willClose: () => {
       localStorage.setItem("login_success", JSON.stringify(validUser));

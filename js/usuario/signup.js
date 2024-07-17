@@ -5,8 +5,16 @@ signupForm.addEventListener("submit", (e) => {
   const email = document.querySelector("#email").value;
   const password = document.querySelector("#password").value;
 
+  if (password.length < 8 || password.length > 20) {
+    return Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "La contraseña debe tener entre 8 y 20 caracteres",
+    });
+  }
   const Users = JSON.parse(localStorage.getItem("users")) || [];
   const isUserRegistered = Users.find((user) => user.email === email);
+
   if (isUserRegistered) {
     return Swal.fire({
       icon: "error",
