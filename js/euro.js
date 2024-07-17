@@ -2,19 +2,18 @@ const user = JSON.parse(localStorage.getItem("login_success")) || false;
 if (!user) {
   window.location.href = "./usuario/login.html";
 }
-let teams = []; // Declarar la variable teams globalmente
+let teams = [];
 
 fetch("../json/teams-eurocopa.json")
   .then((response) => response.json())
   .then((data) => {
-    teams = data; // Asignar los datos a la variable teams
-    crearBotones(); // Llamar a la función para poblar el contenedor con los equipos
+    teams = data;
+    crearBotones();
   })
   .catch((err) => console.error(err));
 
 let teamsContainer = document.getElementById("teams-container");
 
-// Función para poblar el contenedor con los equipos
 function crearBotones() {
   const grupos = Math.ceil(teams.length / 6);
   const grupoA = teams.slice(0, grupos);
@@ -81,7 +80,6 @@ function showModal(team) {
   };
 }
 
-// Verificar que el DOM está completamente cargado antes de intentar acceder a los elementos
 document.addEventListener("DOMContentLoaded", function () {
   teamsContainer = document.getElementById("teams-container");
 });
