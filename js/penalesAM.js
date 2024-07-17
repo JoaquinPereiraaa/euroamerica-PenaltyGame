@@ -82,9 +82,35 @@ function patear(direccion) {
     let resultadoPenal = Math.random();
     let resultado;
     if (resultadoPenal < 0.1) {
-      resultado = "afuera";
+      switch (direccion) {
+        case "derecha":
+          resultado = "fuera derecha";
+          break;
+        case "izquierda":
+          resultado = "fuera izquierda";
+          break;
+        case "medio":
+          resultado = "fuera medio";
+          break;
+        default:
+          resultado = "fuera medio";
+          break;
+      }
     } else if (resultadoPenal < 0.15) {
-      resultado = "palo";
+      switch (direccion) {
+        case "derecha":
+          resultado = "palo derecha";
+          break;
+        case "izquierda":
+          resultado = "palo izquierda";
+          break;
+        case "medio":
+          resultado = "palo medio";
+          break;
+        default:
+          resultado = "palo medio";
+          break;
+      }
     } else if (resultadoPenal < 0.35) {
       switch (direccion) {
         case "derecha":
@@ -161,19 +187,47 @@ function patear(direccion) {
         opcionesGol.style.backgroundImage =
           "url('../assets/img/direccionDisparo/atajadaMedio.jpeg')";
         break;
-      case "afuera":
+      case "fuera medio":
         atajadas++;
         resultadoPartido.atajadasOponente++;
         texto.innerText = "LA MANDÓ A LAS NUBES!!!";
         opcionesGol.style.backgroundImage =
-          "url('../assets/img/direccionDisparo/fuera.jpeg')";
+          "url('../assets/img/direccionDisparo/fueraMedio.jpeg')";
         break;
-      case "palo":
+      case "fuera derecha":
+        atajadas++;
+        resultadoPartido.atajadasOponente++;
+        texto.innerText = "LA MANDÓ A LAS NUBES!!!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/fueraDerecha.jpeg')";
+        break;
+      case "fuera izquierda":
+        atajadas++;
+        resultadoPartido.atajadasOponente++;
+        texto.innerText = "LA MANDÓ A LAS NUBES!!!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/fueraIzquierda.jpeg')";
+        break;
+      case "palo medio":
         atajadas++;
         resultadoPartido.atajadasOponente++;
         texto.innerText = "PALOOOOOOOO!!";
         opcionesGol.style.backgroundImage =
-          "url('../assets/img/direccionDisparo/palo.jpeg')";
+          "url('../assets/img/direccionDisparo/paloMedio.jpeg')";
+        break;
+      case "palo derecha":
+        atajadas++;
+        resultadoPartido.atajadasOponente++;
+        texto.innerText = "PALOOOOOOOO!!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/paloDerecha.jpeg')";
+        break;
+      case "palo izquierda":
+        atajadas++;
+        resultadoPartido.atajadasOponente++;
+        texto.innerText = "PALOOOOOOOO!!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/paloIzquierda.jpeg')";
         break;
       default:
         alert("Error en el resultado.");
