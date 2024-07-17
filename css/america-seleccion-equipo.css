@@ -1,6 +1,10 @@
 body {
   font-family: Arial, sans-serif;
-  background-image: url("https://images.copaamerica.com/1200x600-esp-1.png");
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.377),
+      rgba(24, 23, 23, 0.452)
+    ),
+    url("https://images.copaamerica.com/1200x600-esp-1.png");
   background-position: center;
   background-size: cover;
   display: flex;

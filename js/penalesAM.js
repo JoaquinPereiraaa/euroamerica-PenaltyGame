@@ -17,6 +17,7 @@ let oponente = "";
 let puntos = 0;
 let fase = ["grupos", "cuartos", "semis", "final"];
 const texto = document.querySelector(".gol");
+const opcionesGol = document.querySelector(".arco");
 
 // Cargar datos desde el archivo JSON
 fetch("../json/teams-america.json")
@@ -85,7 +86,20 @@ function patear(direccion) {
     } else if (resultadoPenal < 0.15) {
       resultado = "palo";
     } else if (resultadoPenal < 0.35) {
-      resultado = "atajada";
+      switch (direccion) {
+        case "derecha":
+          resultado = "atajada a la derecha";
+          break;
+        case "izquierda":
+          resultado = "atajada a la izquierda";
+          break;
+        case "medio":
+          resultado = "atajada en el medio";
+          break;
+        default:
+          resultado = "atajada en el medio";
+          break;
+      }
     } else {
       switch (direccion) {
         case "derecha":
@@ -106,26 +120,60 @@ function patear(direccion) {
 
     switch (resultado) {
       case "gol a la izquierda":
+        goles++;
+        resultadoPartido.golesUsuario++;
+        texto.innerText = "GOOOOOOOLAZOO!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/golIzquierda.jpeg')";
+        break;
       case "gol en el medio":
+        goles++;
+        resultadoPartido.golesUsuario++;
+        texto.innerText = "GOOOOOOOLAZOO!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/golMedio.jpeg')";
+        break;
       case "gol a la derecha":
         goles++;
         resultadoPartido.golesUsuario++;
         texto.innerText = "GOOOOOOOLAZOO!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/golDerecha.jpeg')";
         break;
-      case "atajada":
+      case "atajada a la derecha":
         atajadas++;
         resultadoPartido.atajadasOponente++;
         texto.innerText = "ATAJADON!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/atajadaDerecha.jpeg')";
+        break;
+      case "atajada a la izquierda":
+        atajadas++;
+        resultadoPartido.atajadasOponente++;
+        texto.innerText = "ATAJADON!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/atajadaIzquierda.jpeg')";
+        break;
+      case "atajada en el medio":
+        atajadas++;
+        resultadoPartido.atajadasOponente++;
+        texto.innerText = "ATAJADON!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/atajadaMedio.jpeg')";
         break;
       case "afuera":
         atajadas++;
         resultadoPartido.atajadasOponente++;
         texto.innerText = "LA MANDÓ A LAS NUBES!!!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/fuera.jpeg')";
         break;
       case "palo":
         atajadas++;
         resultadoPartido.atajadasOponente++;
         texto.innerText = "PALOOOOOOOO!!";
+        opcionesGol.style.backgroundImage =
+          "url('../assets/img/direccionDisparo/palo.jpeg')";
         break;
       default:
         alert("Error en el resultado.");
@@ -136,7 +184,9 @@ function patear(direccion) {
     setTimeout(() => {
       texto.innerText = "";
     }, 1000);
-
+    setTimeout(() => {
+      opcionesGol.style.backgroundImage = "";
+    }, 1000);
     marcador.innerHTML = `${equipoElegido.name} ${resultadoPartido.golesUsuario} vs ${oponente} ${resultadoPartido.atajadasOponente}`;
 
     if (penalActual === penales) {

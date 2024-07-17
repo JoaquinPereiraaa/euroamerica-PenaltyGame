@@ -1,6 +1,10 @@
 body {
   font-family: Arial, sans-serif;
-  background-image: url("https://s1.elespanol.com/2024/06/12/deportes/futbol/eurocopa/862424653_243974472_1024x576.png");
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.377),
+      rgba(24, 23, 23, 0.452)
+    ),
+    url("https://s1.elespanol.com/2024/06/12/deportes/futbol/eurocopa/862424653_243974472_1024x576.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -9,6 +13,11 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+}
+main h2 {
+  color: #fff;
+  text-shadow: 2px 2px rgb(0, 0, 0);
+  font-weight: bold;
 }
 
 .teams-container {
