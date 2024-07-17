@@ -79,10 +79,10 @@ body {
 }
 
 .modal-content {
-  background-color: #ccfaa1;
+  background-color: #5a5a5846;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 2px solid #888;
   width: 80%;
   max-width: 300px;
 }
